@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-100"><head>
+  <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Пример на bootstrap 5: Прижатый футер с меню в нижней части страницы · Версия v5.2.2">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
+  <title></title>
+<meta name="theme-color" content="#7952b3">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column h-100">
+    
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Прогноз погоды</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Главная</a>
+          </li>
+        </ul>
+        <form class="d-flex" action="" method="post">
+          <input class="form-control me-2" type="text" name='city' placeholder="Введите город" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Поиск</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="flex-shrink-0">
+    <div class="container">
+        <h1 class="mt-5"></h1>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Погода</h4>
+                </div>
+                <div class="card-body">
+                    <strong><h3>Город : {{data.city_name}}</h3></strong>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><h5>Температура : {{data.temp}}<sup>0</sup></h5></li>
+                        <li><h5>Температура (min) : {{data.temp_min}}<sup>0</sup></h5></li>
+                        <li><h5>Температура (max) : {{data.temp_max}}<sup>0</sup></h5></li>
+                        <li><h5>Ощущаеться как : {{data.fiels_like}}<sup>0</sup></h5></li>
+                        <li><h5>Влажность : {{data.humidity}} %</h5></li>
+                        <li><h5>Облачность : {{data.clouds_all}} %</h5></li>
+                        <li><h5>Скорость ветра : {{data.speed}} (м/с)</h5></li>
+                        <li><h5>Давление : {{data.pressure}} гПа</h5></li>
+                        <li></li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
+                </div>
+            </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Интересно знать про {{data.city_name}}</h4>
+                  </div>
+                  <div class="card-body">
+                    <ul class="list-unstyled mt-3 mb-4">
+                      <li><h6>Из Wikipedia <a href="https://en.wikipedia.org/wiki/{{data.city_name}}">Нажмите!</a></h6></li>
+                      <li><h6>Красивые виды <a href="https://pixabay.com/images/search/{{data.city_name}}">Нажмите!</a></h6></li>
+
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+  </div>
+</main>
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">Мой сайт на Flask</span>
+  </div>
+</footer>
+</body>
+</html>
